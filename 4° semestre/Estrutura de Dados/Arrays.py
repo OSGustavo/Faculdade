@@ -9,7 +9,7 @@ tamanho = int(input("Informe o tamanho do vetor: "))
 vetor = inicializar_array(tamanho)
 
 
-#
+
 def inserir(array, indice, valor):
     if indice < 0 or indice >= len(array):
         return False
@@ -36,8 +36,6 @@ def buscar(array, valor):
 
     return -1
 
-
-
 if vetor is None:
     print("O tamanho deve ser maior que zero.")
 else:
@@ -52,7 +50,45 @@ else:
 #recebe o indice da funcao busca e caso exista printa o valor 
 valor_busca = float(input("Qual valor deseja buscar? "))
 indice = buscar(vetor, valor_busca)
+
 if indice == -1:
     print("Valor não encontrado.")
 else:
     print(f"Valor encontrado no índice {indice}.")
+
+
+#funcao que remove o valor de um indice indicado por nós
+def remover(array, indice):
+    if indice < 0 or indice >= len(array):
+        return False
+
+    array[indice] = 0.0
+    return True
+
+#funcao que cria o segundo vetor
+vetor2 = inicializar_array(tamanho)
+print("\nPreenchendo o segundo vetor:")
+
+for i in range(tamanho):
+    valor = float(input(f"Informe o valor da posição {i}: "))
+    inserir(vetor2, i, valor)
+
+print("Segundo vetor:")
+imprimir(vetor2)
+
+
+#funcao que faz a multiplicacao por escalar o PRIMEIRO vetor
+def multiplicar_por_escalar(array, escalar):
+    resultado = inicializar_array(len(array))
+
+    for i in range(len(array)):
+        resultado[i] = array[i] * escalar
+
+    return resultado
+
+escalar = float(input("Informe o valor do escalar: "))
+
+vetor_multiplicado = multiplicar_por_escalar(vetor, escalar)
+
+print("Vetor multiplicado pelo escalar:")
+imprimir(vetor_multiplicado)

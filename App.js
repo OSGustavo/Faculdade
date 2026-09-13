@@ -96,36 +96,44 @@ function Calculadora() {
   const [operacao,setOperacao] = useState("");
   
  
-  function adicionarNumero(n) {
-    setNumero(numero + n);
+function adicionarNumero(n) {
+  setNumero(numero + n);
   }
 
-  function escolherOperacao(op) {
-    setNumero1(numero);
-    setOperacao(op);
-    setNumero("")
+function escolherOperacao(op) {
+  setNumero1(numero);
+  setOperacao(op);
+  setNumero("")
   }
-  function calcular() {
-    let n1 = Number(numero1);
-    let n2 = Number(numero);
-    let resultado = 0;
 
-     if (operacao === "+") {
-      resultado = n1 + n2;
-     }
-     if (operacao === "-") {
-      resultado = n1 - n2;
-     }
+function calcular() {
+  let n1 = Number(numero1);
+  let n2 = Number(numero);
+  let resultado = 0;
 
-     if (operacao === "*"){
-      resultado = n1 * n2;
-     }
-     if (operacao === "/") {
-      resultado = n1 / n2; 
-        }
-        setNumero(resultado.toString());
+  if (operacao === "+") {
+    resultado = n1 + n2;
+  }
+
+  if (operacao === "-") {
+    resultado = n1 - n2;
+  }
+
+  if (operacao === "*"){
+    resultado = n1 * n2;
+  }
+
+  if (operacao === "/") {
+    resultado = n1 / n2; 
+  }
+
+  setNumero(resultado.toString());
   }
  
+  function limpar() {
+  setNumero("");
+  setNumero1("");
+  setOperacao(""); }
 
 
   return (
@@ -135,23 +143,26 @@ function Calculadora() {
     <button onClick={()=>adicionarNumero("7")}>7</button>
     <button onClick={()=>adicionarNumero("8")}>8</button>
     <button onClick={()=>adicionarNumero("9")}>9</button>
-    <button onClick={()=>escolherOperacao("+")}>+</button>
+    <button onClick={()=>escolherOperacao("/")}>÷</button>
 
     </div>
      <button onClick={()=>adicionarNumero("4")}>4</button>
      <button onClick={()=>adicionarNumero("5")}>5</button>
      <button onClick={()=>adicionarNumero("6")}>6</button>
-     <button onClick={()=>escolherOperacao("-")}>-</button>
+     <button onClick={()=>escolherOperacao("*")}>×</button>
 
      <div>
-      <button onClick={()=>adicionarNumero("1")}>1</button>
+     <button onClick={()=>adicionarNumero("1")}>1</button>
      <button onClick={()=>adicionarNumero("2")}>2</button>
      <button onClick={()=>adicionarNumero("3")}>3</button>
+     <button onClick={()=>escolherOperacao("-")}>−</button>
      </div>
 
     <div>
-      <button onClick={()=>adicionarNumero("0")}>0</button>
-      <button onClick={()=>escolherOperacao("/")}>/</button>
+    <button onClick={() => adicionarNumero("0")}>0</button>
+    <button onClick={() => escolherOperacao("+")}>+</button>
+    <button onClick={calcular}>=</button>
+    <button onClick={limpar}>C</button>
       
       
     </div>
